@@ -1,0 +1,87 @@
+---
+title       : Slides for Peer Assignment
+subtitle    : Coursera Class Developing Data Products
+author      : Peter
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Application to predict the mpg of your next car
+
+> - Need to accurately predict mpg of next you purchase
+> - Consumers request objective answers
+> - Factory estimates not always honest?
+> - Ease of use essential - see prototype
+
+```{r fig.align='right', fig.width=10, fig.height=6, echo = F}
+library(png)
+library(grid)
+img <- readPNG("./assets/img/James_and_Browne_car.png")
+ grid.raster(img)
+```
+
+--- .class #id
+## Where do we go from here?
+
+ - Gather more and more accurate data
+ - Create a model with multiple predictors
+ - Design a mobile App with a web based back end
+ - Develop other features to complement the mpg estimates
+<br>
+<br>
+<br>
+
+
+##                                                          Short Demo --->
+
+--- .class #id 
+
+## How to predict the MPG using cars weight:
+
+```{r message = F, echo = T}
+data(mtcars); library(caret)
+mpg <- mtcars$mpg
+weight <- mtcars$wt
+lM <- lm(mpg ~ weight)
+newdata <- data.frame(weight = 3)
+p <- predict(lM, newdata, interval = "predict")
+```
+1. Load the data - mtcars
+2. requires the caret package in R
+3. Uses the linear regression model implemented in R by lm()
+4. Create new dataframe with desired weigth (here in 1000 lbs)
+5. Run prediction function with model
+
+--- &twocol
+
+## Sample Plot with Cars of various types ##
+
+*** =left
+<br>
+
+```{r scplot, dev = 'png', fig.align='left', fig.width = 6.5, fig.height = 5, echo = F}
+qplot(weight*1000,mpg)+ xlab("Car Weight") + ylab("Miles per Gallon") +
+            stat_smooth(method="lm") + ggtitle( "Miles per Gallon vs car weight in lbs") +
+            geom_pointrange(aes(x=3000, y=p[1,1], 
+                            ymin=p[1,2], ymax=p[1,3]), size = 1, shape = 22, colour = "red")
+```
+*** =right
+  <br>
+  <br>
+Print-out of an example estimating the MPG of a 
+car with about 3000 lbs of dry weight:
+<br>
+
+```{r message = F, echo = F   }
+p
+```
+<br>
+fit = fitted value
+
+lwr = lower end of prediction interval
+
+upr = upper end of prediction interval

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slides for Peer Assignment</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Slides for Peer Assignment">
+  <meta name="author" content="Peter">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Slides for Peer Assignment</h1>
+    <h2>Coursera Class Developing Data Products</h2>
+    <p>Peter<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Application to predict the mpg of your next car</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Need to accurately predict mpg of next you purchase</li>
+<li>Consumers request objective answers</li>
+<li>Factory estimates not always honest?</li>
+<li>Ease of use essential - see prototype</li>
+</ul>
+
+<p><img src="figure/unnamed-chunk-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto 0 auto auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Where do we go from here?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Gather more and more accurate data</li>
+<li>Create a model with multiple predictors</li>
+<li>Design a mobile App with a web based back end</li>
+<li>Develop other features to complement the mpg estimates
+<br>
+<br>
+<br></li>
+</ul>
+
+<h2>Short Demo ---&gt;</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How to predict the MPG using cars weight:</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">data(mtcars)
+library(caret)
+mpg &lt;- mtcars$mpg
+weight &lt;- mtcars$wt
+lM &lt;- lm(mpg ~ weight)
+newdata &lt;- data.frame(weight = 3)
+p &lt;- predict(lM, newdata, interval = &quot;predict&quot;)
+</code></pre>
+
+<ol>
+<li>Load the data - mtcars</li>
+<li>requires the caret package in R</li>
+<li>Uses the linear regression model implemented in R by lm()</li>
+<li>Create new dataframe with desired weigth (here in 1000 lbs)</li>
+<li>Run prediction function with model</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Sample Plot with Cars of various types</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><br></p>
+
+<p><img src="figure/scplot.png" title="plot of chunk scplot" alt="plot of chunk scplot" style="display: block; margin: auto auto auto 0;" /></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><br>
+  <br>
+Print-out of an example estimating the MPG of a 
+car with about 3000 lbs of dry weight:
+<br></p>
+
+<pre><code>##     fit   lwr   upr
+## 1 21.25 14.93 27.57
+</code></pre>
+
+<p><br>
+fit = fitted value</p>
+
+<p>lwr = lower end of prediction interval</p>
+
+<p>upr = upper end of prediction interval</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Application to predict the mpg of your next car'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Where do we go from here?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='How to predict the MPG using cars weight:'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Sample Plot with Cars of various types'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
